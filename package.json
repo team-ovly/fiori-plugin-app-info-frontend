@@ -1,0 +1,29 @@
+{
+  "name": "fiori-plugin-app-info",
+  "version": "0.0.1",
+  "description": "Fiori Launchpad - App services",
+  "private": true,
+  "main": "webapp/flp.html",
+  "scripts": {
+    "build": "rimraf dist && ui5 build",
+    "build-full": "rimraf dist && ui5 build -a --include-task=generateManifestBundle generateCachebusterInfo",
+    "start": "ui5 serve --open test/flp.html",
+    "start-live": "npm run start-live-v2",
+    "start-live-v2": "node --inspect node_modules/@ui5/cli/bin/ui5 serve --open index.html"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^2.6.4",
+    "rimraf": "3.0.0",
+    "ui5-middleware-livereload": "0.4.1",
+    "ui5-middleware-simpleproxy": "^0.4.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "1.2.9"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-simpleproxy",
+      "ui5-middleware-livereload"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+	"applications": {},
+	"bootstrapPlugins": {
+		"flp_app_srv": {
+			"component": "ovly.flp.appinfo",
+			"url": "../../../../../"
+		}
+	}
+}
