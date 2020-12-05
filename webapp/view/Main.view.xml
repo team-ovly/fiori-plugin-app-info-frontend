@@ -2,23 +2,22 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:form="sap.ui.layout.form"
     controllerName="ovly.flp.appinfo.controller.Main">
-    <Dialog id="dialog"
-        title="{i18n>main_title}">
-        <content>
-            <form:SimpleForm>
-                <form:content>
-                    <Label text="{i18n>main_form_id}" />
-                    <Text text="{app>/id}" />
-                    <Label text="{i18n>main_form_version}" />
-                    <Text text="{app>/version}" />
-                    <Label text="{i18n>main_form_service}" />
-                    <Text text="{app>/service}" />
-                </form:content>
-            </form:SimpleForm>
-        </content>
-        <buttons>
-            <Button text="{i18n>main_button_close}"
-                press="onClose"/>
-        </buttons>
-    </Dialog>
+    <!-- <App> -->
+    <!-- <pages> -->
+    <form:SimpleForm layout="ResponsiveGridLayout">
+        <form:content>
+            <Label text="{i18n>main_form_system}" />
+            <Text text="{info>/sistema}" />
+            <Label text="{i18n>main_form_client}" />
+            <Text text="{info>/mandante}" />
+            <Label text="{i18n>main_form_id}" />
+            <Text text="{app>/id}" />
+            <Label text="{i18n>main_form_version}" />
+            <Text text="{app>/version}" />
+            <Label text="{i18n>main_form_service}" />
+            <Text text="{app>/service}" />
+        </form:content>
+    </form:SimpleForm>
+    <!-- </pages> -->
+    <!-- </App> -->
 </mvc:View>

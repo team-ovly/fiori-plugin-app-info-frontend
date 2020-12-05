@@ -1,14 +1,16 @@
 sap.ui.define([
-	"sap/ui/core/Component",
+	"sap/ui/core/UIComponent",
 	"sap/base/util/ObjectPath",
-	"sap/ui/core/mvc/XMLView"
+	"sap/ui/core/mvc/XMLView",
+	"sap/m/Dialog"
 ], function (
-	Component,
+	UIComponent,
 	ObjectPath,
-	XMLView
+	XMLView,
+	Dialog
 ) {
 
-	return Component.extend("ovly.flp.appinfo.Component", {
+	return UIComponent.extend("ovly.flp.appinfo.Component", {
 
 		metadata: {
 			"manifest": "json"
@@ -42,6 +44,8 @@ sap.ui.define([
 		 * Hook methods
 		 */
 		init: function () {
+			UIComponent.prototype.init.apply(this, arguments);
+
 			this._getModels();
 
 			var rendererPromise = this._getRenderer();
@@ -53,6 +57,9 @@ sap.ui.define([
 			}.bind(this));
 
 
+		},
+
+		createContent2: function () {
 		},
 
 		/**
@@ -87,13 +94,34 @@ sap.ui.define([
 
 		_displayDialog: function () {
 
+			var oDialog = new Dialog({
+				title: { 
+					path: 'main_title',
+					model: 'i18n'
+				 },
+				buttons: [
+					new sap.m.Button({
+						text: {
+							path: 'main_button_close',
+							model: 'i18n'
+						},
+						press: function(oEvent){							
+							var oSource = oEvent.getSource();
+							var oParameters = oEvent.getParameters();
+							oDialog.close();
+						}
+					})
+				]
+			});
+
+			oDialog.setModel(this._oResourceModel, "i18n");
+							
 			var sViewName = this._getViewName(this.DIALOG_MAIN);
 
 			XMLView.create({
 				viewName: sViewName
 			}).then(function (oView) {
-				oView.setModel(this._oResourceModel, "i18n");
-				var oDialog = oView.getContent()[0];
+				oDialog.addContent(oView);
 				oDialog.open();
 			}.bind(this));
 

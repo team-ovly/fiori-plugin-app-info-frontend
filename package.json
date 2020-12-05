@@ -25,5 +25,8 @@
       "ui5-middleware-simpleproxy",
       "ui5-middleware-livereload"
     ]
+  },
+  "dependencies": {
+    "is-even": "^1.0.0"
   }
 }

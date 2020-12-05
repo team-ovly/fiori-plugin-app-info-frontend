@@ -46,6 +46,7 @@ sap.ui.define([
          */
         _createLocalModels: function () {
             this._oModelView = this._createViewModel();
+            this._createAppInfoModel();
         },
 
         _createViewModel: function () {
@@ -53,6 +54,14 @@ sap.ui.define([
             };
             var oModel = new JSONModel(oViewModelData);
             this.getView().setModel(oModel, "view");
+            return oModel;
+        },
+
+        _createAppInfoModel: function () {
+
+            var oModel = new JSONModel("/api");
+            // this.getView().setModel(oModel, "info");
+            sap.ui.getCore().setModel(oModel, "info");
             return oModel;
         },
 
