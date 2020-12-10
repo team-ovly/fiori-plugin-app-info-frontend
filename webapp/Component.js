@@ -89,23 +89,23 @@ sap.ui.define([
 				text: this._getText("button_text"),
 				press: [this._displayDialog, this]
 			};
-			oRenderer.addHeaderEndItem(oButtonSettings, true);
+			oRenderer.addHeaderEndItem("sap.m.Button", oButtonSettings, true);
 		},
 
 		_displayDialog: function () {
 
 			var oDialog = new Dialog({
-				title: { 
+				title: {
 					path: 'main_title',
 					model: 'i18n'
-				 },
+				},
 				buttons: [
 					new sap.m.Button({
 						text: {
 							path: 'main_button_close',
 							model: 'i18n'
 						},
-						press: function(oEvent){							
+						press: function (oEvent) {
 							var oSource = oEvent.getSource();
 							var oParameters = oEvent.getParameters();
 							oDialog.close();
@@ -115,7 +115,7 @@ sap.ui.define([
 			});
 
 			oDialog.setModel(this._oResourceModel, "i18n");
-							
+
 			var sViewName = this._getViewName(this.DIALOG_MAIN);
 
 			XMLView.create({
